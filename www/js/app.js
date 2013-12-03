@@ -35,9 +35,7 @@ console.log(main_service);
 $scope.main_data = main_service.main;
 
 //$scope.date = main_service.data;
-
-
-
+var deal = "";
 }]);
 
 
