@@ -1,17 +1,55 @@
-<br><br>
-<br><br>
-<br><br>
-<br><br>
+
+<br>
 <div  >
+<button ng-click="save_deal()">SAVE</button>
+<button ng-click="refresh_res()">Load Employess and Jobs</button>
+<br><br>
+<label>Date</label><input  ng-model="date" > <label>Jobs</label> <select ng-model="selectedJob" ng-options="obj as obj for obj in Jobs"></select>
 
-<button ng-click="refresh_res()">deal</button>
 
+<br><br><br>
+<label>Employees</lable>
+<table border='1'>
+<tr>
+        <td width='400px'>
+            <table style='font-size:24px; font-weight:normal;'>
+            <tbody ng-repeat="(emp_id, name) in Employees" ng-click="move_emp(name, emp_id)" >
+                <tr><td >{{emp_id}}</td><td >{{name}}</td></tr>
+            </tbody>
+        </table>
+</td>
+        <td valign='top'>
+                <table style='font-size:24px; font-weight:normal;'>
+                    <thead>
+                        <tr>
+                            <td>Crew Assignment</td>
+                            <td>Name</td>
+                            <td>Id</td>
+                            <td>Per Diem</td>
+                            <td>Onsite Hours</td>
+                            <td>Offsite Hours</td>
+                            <td>Total Hours</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </thead>
+                <tbody ng-repeat="emp in Employees_added">
+                    <tr>
+                        <td><select ng-model="emp.selectedFunction" ng-options="obj as obj for obj in Jobs"></select></td>
+                        <td>{{emp.name}}</td>
+                        <td>{{emp.emp_id}}</td>
+                        <td><input ng-model="emp.perDiem"></td>
+                        <td><input ng-model="emp.onsiteHours"></td>
+                        <td><input ng-model="emp.offsiteHours"></td>
+                        <td>total hours</td>
+                        <td>Remove</td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
 
+</table>
 
-
-<input ng-model="widget.Date">
-
-<input ng-model="widget.Shift">
 
 <!-- 
 <div ng-repeat="vari in widget">

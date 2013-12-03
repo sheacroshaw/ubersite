@@ -26,20 +26,34 @@ fieldApp.controller('MasterInputTwo', ['$scope','$http', 'widget_info', function
 
 $scope.widget = widget_info.data;
 
-
-
-
 }]);
-
-
 
 
 fieldApp.controller('MasterInputOne', ['$scope','$http', 'widget_info', function ($scope, $http, widget_info) {
 //fieldApp.controller('MasterInputOne', function($scope) {
 $scope.widget = widget_info.data;
-
+ 
+$scope.Employees_added = [];
+        $scope.Employees = [];
+        $scope.Jobs = [];
      
 //$scope.deal = [];
+
+$scope.save_deal = function() { 
+
+console.log($scope.Employees_added);
+
+    $http.get('https://ops.layne.com/get_pl3.php', $scope.Employees_added).then(function(result){
+    console.log('this is from the success', result);
+   
+  },function(result){
+  console.log('this is from the ERR ', result);
+  });
+    //console.log($scope.Employees_added)
+
+
+}
+
 
 
     $scope.refresh_res = function() { 
@@ -49,6 +63,21 @@ $scope.widget = widget_info.data;
           
     }
 
+$scope.Employees_added = [];
+
+
+
+    $scope.move_emp = function(name, emp_id) { 
+        //$scope.Employees.splice(index,1)
+            
+        console.log($scope.Employees[emp_id], $scope.Employees);
+
+        $scope.Employees_added.push({emp_id: emp_id, name: name});
+        //$scope.Employees.delete($scope.Employees[emp_id], 1);
+        delete $scope.Employees[emp_id];
+
+
+    }
 
 
     function getSelects(){
@@ -56,20 +85,30 @@ $scope.widget = widget_info.data;
         .success(function(data, status){
 
 
+        //$scope.selected
+
         widget_info.data = data;
         $scope.widget = data;
-        
+        $scope.Employees = $scope.widget.Emp;
+        $scope.Jobs = $scope.widget.Jobs;
+        //console.log($scope.widget.Emp);        
+        console.log($scope.Employees);        
 
-        console.log(data);
+        $scope.selectedJob = $scope.Jobs[0];
+        console.log($scope.Employees[0]);
+        //console.log($scope.selectedJobs);
+        
           
         }).error(function(data, status, headers, config) {
          console.log('error it be');console.log( status); console.log( config);
 
-         $scope.divisions = [{"division":"Energy Services","cost_centers":{"1041":"Water Management Services 1041","1056":"Williamsport 1056","1086":"Energy Services Admin 1086","7156":"Vibration Technology 7156"}},{"division":"Geo","cost_centers":{"1018":"Geoconstruction Admin 1018","1040":"Ruther Glen 1040","1646":"Tecniwell - Mfg. 1646","1701":"Bencor 1701","8900":"Layne Costa Fortuna - Brazil 8900"}}];
+         $scope.divisions = {"Jobs":["24356","26776","27598","26987","22906","19465","16269"],"Emp":{"2900643":"James Gilchrist","1477361":"Chris Harding","389642":"Phillip Trip","33139682":"Lawrence Sherman","26912171":"Hugo Amezquita","20561420":"Mario Cartagena","165198":"George Gervais","21741191":"Jorge Hernandez"}};
 
          console.log($scope.divisions);
          
       });
+
+
     };
 
  }]);
