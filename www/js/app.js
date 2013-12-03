@@ -9,7 +9,7 @@ var fieldApp = angular.module('fieldApp',['shoppinpal.mobile-menu'])
             })
             .when("/Review", {
                 templateUrl: "templates/two.html",
-                controller: "MasterInputOne"
+                controller: "MasterInputTwo"
             })
             .otherwise({
                 redirectTo: "/skinny"
@@ -17,35 +17,61 @@ var fieldApp = angular.module('fieldApp',['shoppinpal.mobile-menu'])
     }]);
 
 
-fieldApp.factory("widget_info",function(){
-         //var widget_info = {data:{}}; 
-         return {};
+fieldApp.factory("main_service",function(){
+
+         //var Employees_added = {};
+         //return {Employees_added: Employees_added};
+         var Employees_added = {};
+         var main = {};
+
+         return {Employees_added: Employees_added, main: main};
+
 });
 
-fieldApp.controller('MasterInputTwo', ['$scope','$http', 'widget_info', function ($scope, $http, widget_info) {
+fieldApp.controller('MasterInputTwo', ['$scope','$http', 'main_service', function ($scope, $http, main_service) {
 
-$scope.widget = widget_info.data;
+console.log(main_service);
+
+$scope.main_data = main_service.main;
+
+//$scope.date = main_service.data;
+
+
 
 }]);
 
 
-fieldApp.controller('MasterInputOne', ['$scope','$http', 'widget_info', function ($scope, $http, widget_info) {
+fieldApp.controller('MasterInputOne', ['$scope','$http', 'main_service', function ($scope, $http, main_service) {
 //fieldApp.controller('MasterInputOne', function($scope) {
-$scope.widget = widget_info.data;
- 
+
+$scope.main = {};
+
+$scope.main.date = "10/10/10";
+$scope.main.shift = "night";
+
+main_service.main = $scope.main;
+main_service.Employees_added = $scope.Employees_added;
+
 $scope.Employees_added = [];
-        $scope.Employees = [];
-        $scope.Jobs = [];
-     
+$scope.Employees = [];
+$scope.Jobs = [];
+
 //$scope.deal = [];
 
 $scope.save_deal = function() { 
 
 console.log($scope.Employees_added);
 
-    $http.get('https://ops.layne.com/get_pl3.php', $scope.Employees_added).then(function(result){
-    console.log('this is from the success', result);
+
+
+    
+var allData = { date_show: $scope.date || '', addedemp : $scope.Employees_added, nonadded : $scope.Employees }
+
    
+    
+    $http.post('https://ops.layne.com/get_pl3.php', allData).then(function(result){
+    //console.log('this is from the success', result);
+    console.log(result.data);
   },function(result){
   console.log('this is from the ERR ', result);
   });
@@ -64,6 +90,7 @@ console.log($scope.Employees_added);
     }
 
 $scope.Employees_added = [];
+
 
 
 
