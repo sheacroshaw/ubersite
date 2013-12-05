@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <link rel="stylesheet" href="topcoat/css/topcoat-mobile-light.min.css"/>
         <link rel="stylesheet" href="css/ng-mobile-menu.min.css"/>
-        <title>Hello World</title>
+        <title>Mobile Field Entry</title>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular-mobile.js"></script>
         <script type="text/javascript" src="js/ng-mobile-menu.min.js"></script>
@@ -23,11 +23,18 @@
             color:#000;
         }
         input  { 
-            font-size:24px;
+            font-size:14px;
+           
         }
+        *:not(input,textarea) {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+}
+
+  }
 
         select { 
-            font-size:24px;
+            font-size:14px;
         }
 
        body {
@@ -48,9 +55,8 @@ font-weight: 200;
 <div id="sp-nav">
     <div class="topcoat-list-container">
         <ul class="topcoat-list">
-            <li class="topcoat-list__item"><a href="#Review">Review</a></li>
             <li class="topcoat-list__item"><a href="#Main">Main</a></li>
-            <li class="topcoat-list__item">Navigation Item 3</li>
+            <li class="topcoat-list__item"><a href="#Review">Review</a></li>
         </ul>
     </div>
 </div>
@@ -64,7 +70,7 @@ font-weight: 200;
             </a>
         </div>
         <div class="topcoat-navigation-bar__item center half">
-            <h1 class="topcoat-navigation-bar__title">ng-mobile-menu Demo</h1>
+            <h1 class="topcoat-navigation-bar__title">Layne Field Entry</h1>
         </div>
         <div class="topcoat-navigation-bar__item right quarter">
             <a class="topcoat-icon-button--quiet">

@@ -1,9 +1,10 @@
 
 <br>
 <div  >
+<button ng-click="save_deal()">SAVE</button>
 <button ng-click="refresh_res()">Load Employess and Jobs</button>
 <br><br>
-<label>Date</label><input  ng-model="date" > <label>Jobs</label> <select ng-model="selectedJob" ng-options="obj as obj for obj in Jobs"></select>
+<label>Date</label><input  ng-model="main.date" ></input> <label>Jobs</label> <select ng-model="selectedJob" ng-options="obj as obj for obj in Jobs"></select>
 
 
 <br><br><br>
@@ -11,36 +12,37 @@
 <table border='1'>
 <tr>
         <td width='400px'>
-            <table style='font-size:24px; font-weight:normal;'>
-            <tbody ng-repeat="(emp_id, name) in Employees" ng-click="move_emp($index)" ng-model="def_emp">
-                <tr><td >{{name}}</td></tr>
+            <table style='font-size:14px; font-weight:normal;'>
+            <tbody ng-repeat="empl in Employees" ng-click="move_emp($index)" >
+                <tr><td width='150px'>{{empl.emp_id}}</td><td width='200px'>{{empl.name}}</td></tr>
             </tbody>
         </table>
 </td>
         <td valign='top'>
-                <table style='font-size:24px; font-weight:normal;'>
+                <table style='font-size:14px; font-weight:normal;'>
                     <thead>
                         <tr>
-                            <td>Crew Assignment</td>
-                            <td>Name</td>
-                            <td>Id</td>
-                            <td>Per Diem</td>
-                            <td>Onsite Hours</td>
-                            <td>Offsite Hours</td>
-                            <td>Total Hours</td>
-                            <td>&nbsp;</td>
+                            <th width='100px;'>Crew Assign.</th>
+                            <th width='150px;'>Name</th>
+                            <th width='80px;'>Id</th>
+                            <th width='80px;'>Per Diem</th>
+                            <th width='100px;'>Onsite Hrs</th>
+                            <th width='100px;'>Offsite Hrs</th>
+                            <th width='100px;'>Total Hours</th>
+                            <th width='100px;'>&nbsp;</th>
                         </tr>
                     </thead>
-                <tbody ng-repeat="(emp_id, name) in Employees_added">
+
+                <tbody ng-repeat="em in Employees_added">
                     <tr>
-                        <td><select ng-model="selectedFunction" ng-options="obj as obj for obj in Jobs"></select></td>
-                        <td>{{name}}</td>
-                        <td>{{emp_id}}</td>
-                        <td><input ng-model="perDiem"></td>
-                        <td><input ng-model="onsiteHours"></td>
-                        <td><input ng-model="offsiteHours"></td>
+                        <td><select ng-model="em.crewAssignment" ng-options="obj as obj for obj in Pay_Types">-none-</select></td>
+                        <td>{{em.name}}</td>
+                        <td>{{em.emp_id}}</td>
+                        <td><input ng-model="em.perDiem" style="width:50px;"></input></td>
+                        <td><input ng-model="em.onsiteHours" style="width:50px;"></input></td>
+                        <td><input ng-model="em.offsiteHours" style="width:50px;"></input></td>
                         <td>total hours</td>
-                        <td>Remove</td>
+                        <td ng-click="move_back($index)">Remove</td>
                     </tr>
                 </tbody>
             </table>
