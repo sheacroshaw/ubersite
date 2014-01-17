@@ -1,5 +1,5 @@
 /** Automatically generated file. DO NOT MODIFY */
-package com.uber.next;
+package com.minex.menu;
 
 public final class BuildConfig {
     public final static boolean DEBUG = true;

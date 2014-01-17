@@ -5,15 +5,35 @@
         <meta name="format-detection" content="telephone=no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+
         <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <script type='application/javascript' src='js/fastclick.js'></script>
         <link rel="stylesheet" href="topcoat/css/topcoat-mobile-light.min.css"/>
         <link rel="stylesheet" href="css/ng-mobile-menu.min.css"/>
         <title>Mobile Field Entry</title>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular-mobile.js"></script>
         <script type="text/javascript" src="js/ng-mobile-menu.min.js"></script>
-        <script src="js/app.js"></script>        
+        <script src="js/app.js"></script> 
+
+
+        <script type="application/javascript">
+        window.addEventListener('load', function() {
+                var textInput = document.querySelector('input');
+
+                FastClick.attach(document.body);
+                Array.prototype.forEach.call(document.getElementsByClassName('test'), function(testEl) {
+                        testEl.addEventListener('click', function() {
+                                textInput.focus();
+                        }, false)
+                });
+        }, false);
+
+</script>    
     <style>
+
+
         #sp-page {
             color:#000;
             background-color:#f2f2f2;
@@ -21,42 +41,85 @@
         #sp-page > p {
             padding: 10px;
             color:#000;
+            margin-left:10px;
         }
+
+        .menu_ul{
+            border: 0 solid #333;
+            border-width: 0 0 1px 1px;
+            color:#000;
+            font-size:18px;
+            text-decoration:none;
+        }
+        .menu_li{
+            border: 0 solid #333;
+            border-width: 1px 1px 0 0;
+            
+            color:#000;
+            font-size:18px;
+            text-decoration:none;
+        }
+
         input  { 
+            -webkit-transform: translate3d(0,0,0);
+-webkit-backface-visibility: hidden;
+-webkit-perspective: 1000;
+-webkit-transform-style: flat;
             font-size:14px;
-           
+            text-align:right;          
         }
-        *:not(input,textarea) {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-}
-
-  }
-
+       
         select { 
             font-size:14px;
         }
 
        body {
-color: #000;
-font: 28px "Source Sans",helvetica,arial,sans-serif;
-font-weight: 200;
-}
+            color: #000;
+            font: 14px "Source Sans",helvetica,arial,sans-serif;
+            font-weight: 200;
+            text-transform: none;
+        }
+        
         label { 
             color:#000;
             font-weight:bold;
             padding-left:5px; 
             padding-right:5px;
         }
+
+        .mm_link { 
+            text-decoration:none;
+            color:#000;
+            font-weight:bold;
+            font-size:20px;
+            padding:1em; 
+            display:block; 
+            width:inherit; 
+            height:inherit;
+
+        }
+
+        th { 
+            text-align:left;
+            padding-left:5px;
+        }
+
+        .label_span { 
+            font-weight:bold;
+            padding-right:3px;
+
+        }
+
+
     </style>        
     </head>
-<body ng-app="fieldApp">
+<body ng-app="fieldApp" >
 
 <div id="sp-nav">
     <div class="topcoat-list-container">
-        <ul class="topcoat-list">
-            <li class="topcoat-list__item"><a href="#Main">Main</a></li>
-            <li class="topcoat-list__item"><a href="#Review">Review</a></li>
+        <ul class="topcoat-list menu_ul">
+            <li class="topcoat-list__item menu_li" style="padding:0px;"><a class='mm_link' href="#Main">Main</a></li>
+            <li class="topcoat-list__item menu_li" style="padding:0px;"><a class='mm_link' href="#Review">Review</a></li>
         </ul>
     </div>
 </div>
@@ -80,9 +143,9 @@ font-weight: 200;
     </div>
     
 
-
+<div style="padding-left:20px;">
     <ng-view></ng-view>
-
+</div>
 
 
 </div>

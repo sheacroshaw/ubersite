@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.uber.next;
+package com.minex.menu;
 
 public final class R {
     public static final class attr {

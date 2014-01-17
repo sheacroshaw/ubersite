@@ -4,45 +4,62 @@
 <button ng-click="save_deal()">SAVE</button>
 <button ng-click="refresh_res()">Load Employess and Jobs</button>
 <br><br>
-<label>Date</label><input  ng-model="main.date" ></input> <label>Jobs</label> <select ng-model="selectedJob" ng-options="obj as obj for obj in Jobs"></select>
+
+<span class='label_span'>Date</span><input  ng-model="main.date" type='date'></input> <span class='label_span'>Jobs</span> 
+<select ng-model="Account_Codes_sel" ng-options="v as k for (k , v) in Account_Codes.Job_Number"></select>
 
 
-<br><br><br>
-<label>Employees</lable>
-<table border='1'>
+
+<br><br>
+<label>Employees</label>
+<table border='1' style="height:500px;">
 <tr>
-        <td width='400px'>
-            <table style='font-size:14px; font-weight:normal;'>
-            <tbody ng-repeat="empl in Employees" ng-click="move_emp($index)" >
-                <tr><td width='150px'>{{empl.emp_id}}</td><td width='200px'>{{empl.name}}</td></tr>
-            </tbody>
-        </table>
-</td>
+        <td width='400px' valign="top">
+            <table style='font-size:14px; font-weight:normal;  border-collapse:collapse;'>
+                    <thead>
+                        <tr><th width='300px'>Name</th><th width='100px'>Id</th></tr>
+                    </thead>
+
+                    <tbody ng-repeat="empl in Employees" ng-click="move_emp($index)">
+                        <tr style="border:1px solid #333; background-color:#fff;">
+                            <td style="padding-left:10px;" width='150px' height="40px;" >{{empl.name}}</td>
+                            <td style="padding-left:10px;" width='100px'>{{empl.emp_id}}</td></tr>
+                    </tbody>
+            </table>
+        </td>
         <td valign='top'>
-                <table style='font-size:14px; font-weight:normal;'>
+                <table style='font-size:14px; font-weight:normal; border-collapse:collapse;'>
                     <thead>
                         <tr>
+                            <th width='200px;'>Name</th>
+                            <th width='70px;'>Id</th>
                             <th width='100px;'>Crew Assign.</th>
-                            <th width='150px;'>Name</th>
-                            <th width='80px;'>Id</th>
+                            <th width='100px;'>Union</th>
                             <th width='80px;'>Per Diem</th>
+                            <th width='80px;'>Per Diem Type</th>
                             <th width='100px;'>Onsite Hrs</th>
                             <th width='100px;'>Offsite Hrs</th>
-                            <th width='100px;'>Total Hours</th>
-                            <th width='100px;'>&nbsp;</th>
+                            <th width='80px;'>Total Hrs</th>
+                            <th width='80px;'>&nbsp;</th>
                         </tr>
                     </thead>
 
                 <tbody >
-                    <tr ng-repeat="em in Employees_added">
-                        <td><select ng-model="em.crewAssignment" ng-options="obj as obj for obj in Pay_Types">-none-</select></td>
+                    <tr ng-repeat="em in Employees_added" style="border:1px solid #333; background-color:#fff; height:40px;">
                         <td>{{em.name}}</td>
                         <td>{{em.emp_id}}</td>
-                        <td><input ng-model="em.perDiem" style="width:50px;"></input></td>
-                        <td><input ng-model="em.onsiteHours" style="width:50px;"></input></td>
-                        <td><input ng-model="em.offsiteHours" style="width:50px;"></input></td>
-                        <td>total hours</td>
-                        <td ng-click="move_back($index)">Remove</td>
+                        <td><select ng-model="em.crewAssignment" ng-options="obj as obj for obj in Pay_Types">-none-</select></td>
+                        <td><input ng-model="em.Union" style="width:80px;" type="text"></input></td>
+                        <td><input ng-model="em.perDiem" style="width:50px;" type="number"></input></td>
+                        <td>
+                            <select ng-model="em.diem_type" ng-options="k as v for (k , v) in Account_Codes_sel">
+                               
+                            </select>
+                        </td>
+                        <td><input ng-model="em.onsiteHours" style="width:50px;" type="number"></input></td>
+                        <td><input ng-model="em.offsiteHours" style="width:50px;" type="number"></input></td>
+                        <td>{{em.onsiteHours + em.offsiteHours}}</td>
+                        <td ng-click="move_back($index)" align='right' style='color:#900; padding-right:5px;'>Remove</td>
                     </tr>
                 </tbody>
             </table>

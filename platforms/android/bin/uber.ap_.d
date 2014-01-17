@@ -16,6 +16,7 @@
 /home/shea/sites/ubersite/platforms/android/assets/www/index.html \
 /home/shea/sites/ubersite/platforms/android/assets/www/spec \
 /home/shea/sites/ubersite/platforms/android/assets/www/topcoat \
+/home/shea/sites/ubersite/platforms/android/assets/www/date.html \
 /home/shea/sites/ubersite/platforms/android/assets/www/cordova_plugins.js \
 /home/shea/sites/ubersite/platforms/android/assets/www/js \
 /home/shea/sites/ubersite/platforms/android/assets/www/res \
@@ -45,9 +46,16 @@
 /home/shea/sites/ubersite/platforms/android/assets/www/topcoat/font/SourceSansPro-Semibold.otf \
 /home/shea/sites/ubersite/platforms/android/assets/www/topcoat/css/topcoat-mobile-light.min.css \
 /home/shea/sites/ubersite/platforms/android/assets/www/topcoat/img/hamburger_dark.svg \
+/home/shea/sites/ubersite/platforms/android/assets/www/js/jquery-1.10.2.min.js \
+/home/shea/sites/ubersite/platforms/android/assets/www/js/external \
 /home/shea/sites/ubersite/platforms/android/assets/www/js/app.js \
 /home/shea/sites/ubersite/platforms/android/assets/www/js/index.js \
+/home/shea/sites/ubersite/platforms/android/assets/www/js/fastclick.js \
 /home/shea/sites/ubersite/platforms/android/assets/www/js/ng-mobile-menu.min.js \
+/home/shea/sites/ubersite/platforms/android/assets/www/js/mobipick.css \
+/home/shea/sites/ubersite/platforms/android/assets/www/js/jquery.mobile.min.js \
+/home/shea/sites/ubersite/platforms/android/assets/www/js/jquery.mobile-1.3.0.min.js \
+/home/shea/sites/ubersite/platforms/android/assets/www/js/date \
 /home/shea/sites/ubersite/platforms/android/assets/www/res/icon \
 /home/shea/sites/ubersite/platforms/android/assets/www/res/screen \
 /home/shea/sites/ubersite/platforms/android/assets/www/res/icon/android \
@@ -115,8 +123,11 @@
 /home/shea/sites/ubersite/platforms/android/assets/www/res/screen/blackberry10/splash-720x720.png \
 /home/shea/sites/ubersite/platforms/android/assets/www/res/screen/blackberry10/splash-768x1280.png \
 /home/shea/sites/ubersite/platforms/android/assets/www/res/screen/tizen/README.md \
+/home/shea/sites/ubersite/platforms/android/assets/www/css/mobipick.css \
+/home/shea/sites/ubersite/platforms/android/assets/www/css/jquery.mobile-1.3.0.min.css \
 /home/shea/sites/ubersite/platforms/android/assets/www/css/index.css \
 /home/shea/sites/ubersite/platforms/android/assets/www/css/ng-mobile-menu.min.css \
+/home/shea/sites/ubersite/platforms/android/assets/www/css/date \
 /home/shea/sites/ubersite/platforms/android/assets/www/templates/two.html \
 /home/shea/sites/ubersite/platforms/android/assets/www/templates/one.html \
 /home/shea/sites/ubersite/platforms/android/assets/www/img/logo.png \

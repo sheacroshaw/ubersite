@@ -43,7 +43,7 @@ fieldApp.controller('MasterInputOne', ['$scope','$http', 'main_service', functio
 
 $scope.main = {};
 
-$scope.main.date = "10/10/10";
+$scope.main.date = "10/10/2010";
 $scope.main.shift = "night";
 
 main_service.main = $scope.main;
@@ -55,14 +55,15 @@ $scope.Jobs = [];
 
 $scope.save_deal = function() { 
 
-    
-var allData = { date_show: $scope.date || '', addedemp : $scope.Employees_added, Pay_Types : $scope.Pay_Types }
+
+var allData = { date_show: $scope.main.date || '', job_number: $scope.selectedJob, addedemp : $scope.Employees_added }
     
     $http.post('https://ops.layne.com/get_pl3.php', allData).then(function(result){
     //console.log('this is from the success', result);
     console.log(result.data);
   },function(result){
-  console.log('this is from the ERR ', result);
+    console.log("no good");
+  console.log(result.data);
   });
     //console.log($scope.Employees_added)
 
@@ -107,7 +108,9 @@ var allData = { date_show: $scope.date || '', addedemp : $scope.Employees_added,
         $scope.Jobs = data.Jobs;
         $scope.Pay_Types = data.Pay_Types;
         $scope.selectedJob = $scope.Jobs[0];
-        console.log($scope.Employees);
+        $scope.Account_Codes = data.Account_Codes
+
+        console.log($scope.Account_Codes);
           
         }).error(function(data, status, headers, config) {
          console.log('error it be');console.log( status); console.log( config);

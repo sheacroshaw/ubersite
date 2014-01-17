@@ -1,3 +1,3 @@
 # view AndroidManifest.xml #generated:6
--keep class com.uber.next.uber { <init>(...); }
+-keep class com.minex.menu.uber { <init>(...); }
 
